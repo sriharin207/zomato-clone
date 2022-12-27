@@ -1,0 +1,7 @@
+.container {
+  background: rgb(247, 244, 244);
+  border-radius: 1rem;
+  width: 70%;
+  margin: 1rem auto;
+  padding: 1rem;
+}

@@ -1,0 +1,47 @@
+.container {
+  padding: 0.5rem;
+  border-bottom: 1px solid grey;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.leftMenu {
+  width: 70%;
+}
+.name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: rgb(28, 28, 28);
+  margin: 0px;
+  font-family: inherit;
+}
+
+.priceQuan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quantity{
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    padding: 3px;
+}
+.subTotal{
+    font-family: inherit;
+    font-weight: 500;
+}
+.price {
+  color: rgba(158, 108, 0, 0.988);
+  font-weight: bold;
+}
+
+.addRemovebtns {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}

@@ -1,0 +1,7 @@
+.plus,
+.minus {
+  font-size: 2rem;
+  color: rgb(66, 66, 157);
+  cursor: pointer;
+  display: block;
+}

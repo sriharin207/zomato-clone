@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: 1px solid rgb(179, 184, 184);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  line-height: 1.7rem;
+  margin-right: 5%;
+}
+
+.leftMenu{
+  display: flex;
+}
+
+.name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: rgb(28, 28, 28);
+  margin: 0px;
+}
+
+.seller {
+  background: rgb(239, 100, 88);
+  border-radius: 4px;
+  color: rgb(255, 255, 255);
+  padding: 0.5px 5px;
+}
+
+.price {
+  color: rgba(158, 108, 0, 0.988);
+  font-weight: bold;
+}
+
+.inputForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

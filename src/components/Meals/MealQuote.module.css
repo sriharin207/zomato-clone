@@ -1,0 +1,35 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -7%;
+}
+.quote {
+  width: 50%;
+  text-align: center;
+  background-color: rgba(131, 128, 113, 0.09);
+  padding: 1.5rem;
+  border-radius: 7px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.title {
+  font-family: "Signika Negative";
+  font-weight: 400;
+  font-size: 45px;
+  letter-spacing: -0.3px;
+}
+
+.titleQuote {
+  font-size: 24px;
+  font-weight: lighter;
+}
+
+@media screen and (max-width: 900px) {
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
