@@ -32,3 +32,28 @@ button:hover {
   background-color: brown;
   color: white;
 }
+
+button:disabled {
+  background-color: red;
+  color: white;
+  opacity: 0.6;
+}
+
+.clsBtn {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin-right: 5%;
+}
+
+.closeBtn {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: brown;
+  border-radius: 20px;
+  font-weight: bold;
+  background-color: white;
+  border: 1px solid brown;
+  cursor: pointer;
+  transition: 0.3s;
+}

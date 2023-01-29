@@ -1,0 +1,61 @@
+form {
+  margin-top: 0.6rem;
+}
+.formEle {
+  display: grid;
+  padding: 0.5rem;
+  column-gap: 1rem;
+  row-gap: 1.5rem;
+}
+
+.Ele {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+
+label {
+  font-weight: 500;
+}
+span {
+  color: red;
+  font-weight: bold;
+}
+input {
+  border-radius: 5px;
+  font-weight: 600;
+  border: 1px solid rgb(209, 206, 206);
+  padding: 0.5rem;
+  outline: none;
+  max-width: 50%;
+  flex: 1;
+  width: 100%;
+}
+
+.inputErr {
+  border: 1px solid red;
+}
+
+.errtxt{
+  color: red;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 5%;
+  margin-top: 0.5rem;
+}
+
+.btn button {
+  padding: 0.5rem 1rem;
+  color: brown;
+  border-radius: 20px;
+  font-weight: bold;
+  text-align: center;
+  background-color: white;
+  border: 1px solid brown;
+  cursor: pointer;
+  transition: 0.3s;
+}

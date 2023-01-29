@@ -12,10 +12,12 @@
   z-index: 11;
   position: fixed;
   width: 55%;
+  max-height: 55%;
   top: 20%;
   background-color: white;
   left: 50%;
   transform: translate(-50%);
   border-radius: 12px;
   padding: 1.5rem;
+  overflow:auto;
 }

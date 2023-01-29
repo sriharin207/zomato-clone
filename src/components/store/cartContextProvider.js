@@ -28,6 +28,8 @@ const cardReducer = (state, action) => {
       }
     }
     return updatedArr;
+  } else if (action.type === "CLEAR") {
+    return defaultItemArr;
   }
   return defaultItemArr;
 };
@@ -43,10 +45,15 @@ const CartContextProvider = (props) => {
     updateItemms({ type: "REMOVE", id: id });
   };
 
+  const clearCartItems = () => {
+    updateItemms({ type: "CLEAR" });
+  };
+
   const cartContextValue = {
     itemsArr: items,
     addItem: addItems,
     removeItem: removeItems,
+    clearCartItems: clearCartItems,
   };
 
   return (
