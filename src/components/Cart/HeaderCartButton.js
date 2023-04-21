@@ -1,11 +1,11 @@
 import React, { Fragment, useContext } from "react";
 import classes from "./HeaderCartButton.module.css";
 import { FaCartPlus } from "react-icons/fa";
-import cartContext from "../store/cartContext";
+import { useSelector } from "react-redux";
 
 const HeaderCartButton = (props) => {
-  const cartCtx = useContext(cartContext);
-  const ItemsQuantity = cartCtx.itemsArr.length;
+  const cartItems = useSelector((state) => state.items);
+  const ItemsQuantity = cartItems.length;
   return (
     <Fragment>
       <div className={classes.cart} onClick={props.onclick}>

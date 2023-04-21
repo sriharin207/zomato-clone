@@ -1,25 +1,22 @@
 import React, { useContext, useState } from "react";
-import cartContext from "../store/cartContext";
 import Modal from "../UI/Modal";
 import ModalItems from "./ModalItems";
 import classes from "./CartModal.module.css";
 import CheckOutForm from "./CheckOutForm";
+import { useSelector, useDispatch } from "react-redux";
+import { dataSliceActions } from "../store/dataSlice";
 
 const CartModal = (props) => {
-  const context = useContext(cartContext);
+  const cartItems = useSelector((state) => state.items);
+  const dispatch = useDispatch();
   const [showCheckOutForm, setshowCheckOutForm] = useState(false);
   const [orderSubmiting, setorderSubmiting] = useState(false);
   const [orderSubmitted, setorderSubmitted] = useState(false);
-  let itemsToRender = context.itemsArr.map((ele) => (
-    <ModalItems
-      data={ele}
-      key={ele.id}
-      addItem={context.addItem.bind(null, ele)}
-      removeItem={context.removeItem.bind(null, ele.id)}
-    />
+  let itemsToRender = cartItems.map((ele) => (
+    <ModalItems data={ele} key={ele.id} />
   ));
 
-  const finalPrice = context.itemsArr.reduce((initialValue, ele) => {
+  const finalPrice = cartItems.reduce((initialValue, ele) => {
     return initialValue + ele.price * ele.quantity;
   }, 0);
 
@@ -30,7 +27,8 @@ const CartModal = (props) => {
   const submitOrdertoDB = async (userData) => {
     setorderSubmiting(true);
     const orderDetails = {
-      orderedItems: context.itemsArr,
+      orderedItems: cartItems,
+      finalBillAmount: finalPrice,
       userDetails: userData,
       orderedDateTime: new Date().toString(),
     };
@@ -45,7 +43,7 @@ const CartModal = (props) => {
     if (response.ok) {
       setorderSubmiting(false);
       setorderSubmitted(true);
-      context.clearCartItems();
+      dispatch(dataSliceActions.clearItems());
     }
   };
   const orderBtnStatus = finalPrice === 0;

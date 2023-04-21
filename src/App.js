@@ -3,14 +3,15 @@ import Header from "./components/Layout/header";
 import AppCss from "./App.module.css";
 import Meals from "./components/Meals/Meals";
 
-import CartContextProvider from "./components/store/cartContextProvider";
+import { store } from "./components/store/store";
+import { Provider } from "react-redux";
 
 function App() {
   return (
-    <CartContextProvider className={AppCss.border}>
+    <Provider store={store} className={AppCss.border}>
       <Header />
       <Meals />
-    </CartContextProvider>
+    </Provider>
   );
 }
 

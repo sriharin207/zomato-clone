@@ -1,19 +1,20 @@
-import React, { useContext } from "react";
+import React from "react";
 import classes from "./ModalItems.module.css";
 import AddButton from "../UI/AddButton";
 import RemoveButton from "../UI/RemoveButton";
-import cartContext from "../store/cartContext";
+import { useDispatch } from "react-redux";
+import { dataSliceActions } from "../store/dataSlice";
 
 const ModalItems = (props) => {
+  const dispatch = useDispatch();
   const price = `Rs ${props.data.price.toFixed(2)}`;
-  const context = useContext(cartContext);
 
   const addItemHandler = () => {
-    context.addItem(props.data);
+    dispatch(dataSliceActions.addItems(props.data));
   };
 
   const removeItemHandler = () => {
-    context.removeItem(props.data.id);
+    dispatch(dataSliceActions.removeItem(props.data));
   };
   return (
     <div className={classes.container}>

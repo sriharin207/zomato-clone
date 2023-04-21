@@ -1,14 +1,14 @@
 import React, { useState, useContext } from "react";
-import cartContext from "../../store/cartContext";
 import classes from "../Form/MealItemForm.module.css";
 import AddItem from "./AddItem";
+import { useDispatch } from "react-redux";
+import { dataSliceActions } from "../../store/dataSlice";
 
 const MealItemForm = (props) => {
   const [enableaddToCart, setbtnState] = useState(true);
-  const context = useContext(cartContext);
-
+  const dispatch = useDispatch();
   const onAddToCart = () => {
-    context.addItem({ ...props.data, quantity: 1 });
+    dispatch(dataSliceActions.addItems({ ...props.data, quantity: 1 }));
     setbtnState(false);
   };
 
@@ -24,11 +24,7 @@ const MealItemForm = (props) => {
         </button>
       )}
       {!enableaddToCart && (
-        <AddItem
-          enableBtn={enableBtn}
-          data={props.data}
-          id={props.data.id}
-        />
+        <AddItem enableBtn={enableBtn} data={props.data} id={props.data.id} />
       )}
     </div>
   );
