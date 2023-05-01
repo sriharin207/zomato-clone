@@ -3,28 +3,49 @@
   top: 0;
   left: 0;
   width: 100%;
-  height:3.5rem;
+  height: 3.5rem;
   background-color: rgb(228, 53, 53);
   color: white;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   z-index: 15;
 }
 
-.title{
-    margin-left: 5%;
+.main-bg {
+  width: 100%;
+  height: 17rem;
+  overflow: hidden;
 }
 
-.main-bg{
-    width: 100%;
-    height: 17rem;
-    overflow: hidden;
+.main-bg img {
+  width: 110%;
+  height: 100%;
+  object-fit: cover;
+  transform: rotateZ(-5deg) translateY(-1.1rem) translateX(-1rem);
 }
 
-.main-bg img{
-    width: 110%;
-    height: 100%;
-    object-fit: cover;
-    transform: rotateZ(-5deg) translateY(-1.1rem) translateX(-1rem);
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.active {
+  color: #100602fa;
+  text-decoration: underline;
+  font-size: larger;
+}
+
+.cartBtn{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.logout{
+  padding: 0.3rem;
+  border-radius: 0.15rem;
+  color: black;
 }

@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment } from "react";
 import classes from "./HeaderCartButton.module.css";
 import { FaCartPlus } from "react-icons/fa";
 import { useSelector } from "react-redux";

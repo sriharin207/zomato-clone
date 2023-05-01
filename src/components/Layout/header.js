@@ -3,7 +3,10 @@ import HeaderCartButton from "../Cart/HeaderCartButton";
 import classes from "./header.module.css";
 import bgImg from "./../../images/bg1.jpg";
 import CartModal from "../Cart/CartModal";
+import { Form, NavLink, useRouteLoaderData } from "react-router-dom";
+
 const Header = (props) => {
+  const tokenExists = useRouteLoaderData("root-loader");
   const [modalState, setmodalState] = useState(false);
 
   const enableModalVisibility = () => {
@@ -16,8 +19,41 @@ const Header = (props) => {
   return (
     <Fragment>
       <header className={classes.header}>
-        <h2 className={classes.title}>Zomato</h2>
-        <HeaderCartButton onclick={enableModalVisibility} />
+        <div>
+          <NavLink to="/items">
+            <h2>Zomato</h2>
+          </NavLink>
+        </div>
+        {tokenExists && (
+          <div>
+            <NavLink
+              to="/orders"
+              className={({ isActive }) => (isActive ? classes.active : "")}
+            >
+              <h3>My Orders</h3>
+            </NavLink>
+          </div>
+        )}
+
+        <div className={classes.cartBtn}>
+          {tokenExists && <HeaderCartButton onclick={enableModalVisibility} />}
+          {!tokenExists && (
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? classes.active : "")}
+            >
+              <h3>Login</h3>
+            </NavLink>
+          )}
+
+          {tokenExists && (
+            <Form action="/logout" method="POST">
+              <button className={classes.logout}>
+                <h4>Logout</h4>
+              </button>
+            </Form>
+          )}
+        </div>
       </header>
       <div className={classes["main-bg"]}>
         <img src={bgImg} alt="" />

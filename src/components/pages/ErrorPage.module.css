@@ -1,0 +1,15 @@
+.errorContent {
+  display: block;
+  text-align: center;
+}
+.errorContent img {
+  max-width: 50%;
+  margin: auto auto;
+}
+
+.customError {
+  margin: 10px 15px 1rem;
+  color: rgb(28, 28, 28);
+  font-size: 1.5rem;
+  font-weight: 500;
+}

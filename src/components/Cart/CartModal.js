@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Modal from "../UI/Modal";
 import ModalItems from "./ModalItems";
 import classes from "./CartModal.module.css";
@@ -28,7 +28,7 @@ const CartModal = (props) => {
     setorderSubmiting(true);
     const orderDetails = {
       orderedItems: cartItems,
-      finalBillAmount: finalPrice,
+      finalBillAmount: finalPrice.toFixed(2),
       userDetails: userData,
       orderedDateTime: new Date().toString(),
     };
