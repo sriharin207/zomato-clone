@@ -9,8 +9,8 @@ router.post("/createUser", control.createUser);
 
 router.get("/getItemsDetails", control.getItemsDetails);
 
-// router.post("/submitOrder", verifyToken, control.submitOrder);
-router.post("/submitOrder", control.submitOrder);
+router.post("/submitOrder", verifyToken, control.submitOrder);
+// router.post("/submitOrder", control.submitOrder);
 
 router.get("/getOrderedItemsData", verifyToken, control.getOrderedItemsData);
 // router.get("/getOrderedItemsData", control.getOrderedItemsData);

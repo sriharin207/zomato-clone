@@ -34,7 +34,7 @@ export async function fetchMealItems() {
     });
     return MealItemsArr;
   } else {
-    throw new Response("Unable to Items", { status: 500 });
+    throw new Response("Unable to fetch Items", { status: 500 });
   }
 }
 
@@ -42,7 +42,6 @@ const MealItems = (props) => {
   const MealItemsList = useLoaderData();
   const isLoading = useNavigation().state === "loading";
   const apiError = useActionData();
-
   let contentToRender = "";
   if (!apiError) {
     if (!isLoading) {

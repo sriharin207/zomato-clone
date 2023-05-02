@@ -9,15 +9,19 @@ export async function fetchOrderedItems() {
   if (!jwtToken) {
     return redirect("/");
   }
-  const data = await fetch("http://localhost:3001/api/getOrderedItemsData", {
-    headers: {
-      "Content-Type": "application/json",
-      authorization: "Bearer " + jwtToken,
-      mobilenumber: mobileNumber,
-    },
-  });
-  if (data.ok) {
-    const Orders1 = await data.json();
+  const backendRes = await fetch(
+    "http://localhost:3001/api/getOrderedItemsData",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: "Bearer " + jwtToken,
+        mobilenumber: mobileNumber,
+      },
+    }
+  );
+  if (backendRes.ok) {
+    const Orders1 = await backendRes.json();
     const Orders = Orders1.OrderedItems;
     const formattedOrdersArr = [];
     for (const key in Orders) {
@@ -26,27 +30,31 @@ export async function fetchOrderedItems() {
         finalBillAmount: Orders[key].finalBillAmount,
         orderedDateTime: Orders[key].orderedDateTime,
         orderedItemsList: Orders[key].orderedItems,
+        mobileNumber: Orders[key].mobileNumber,
       });
     }
     return formattedOrdersArr;
   } else {
-    throw new Response("Unable to fetch Orders", { status: 500 });
+    return backendRes;
   }
 }
 
 const MyOrders = () => {
-  const orderedItems = useLoaderData();
   const currentState = useNavigation().state === "loading";
-
+  const orderedItems = useLoaderData();
+  const isError = orderedItems.message ? true : false;
   return (
     <div>
       <p className={classes.orderTitle}>Orders History</p>
       {currentState && <p className={classes.loading}>Loading Data...</p>}
-      <div className={classes.container}>
-        {orderedItems.map((ele) => (
-          <OrderedItems data={ele} key={ele.orderID} />
-        ))}
-      </div>
+      {!isError && (
+        <div className={classes.container}>
+          {orderedItems.map((ele) => (
+            <OrderedItems data={ele} key={ele.orderID} />
+          ))}
+        </div>
+      )}
+      {isError && <p className={classes.noOrders}>{orderedItems.message}</p>}
     </div>
   );
 };

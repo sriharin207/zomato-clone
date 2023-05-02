@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     loader: tokenLoader,
     children: [
       { path: "/", element: <LoginPage />, action: loginAction },
-      { path: "/items", element: <App /> ,loader:fetchMealItems},
+      { path: "/items", element: <App />, loader: fetchMealItems },
       { path: "/signup", element: <SignUpPage />, action: signupAction },
       { path: "/orders", element: <MyOrders />, loader: fetchOrderedItems },
     ],

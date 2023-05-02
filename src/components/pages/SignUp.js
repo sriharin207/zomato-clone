@@ -70,7 +70,6 @@ export async function signupAction({ request }) {
     password: data.get("password"),
     firstName: data.get("firstName"),
   };
-  console.log(newUserDetails)
   const backendRes = await fetch("http://localhost:3001/api/createUser", {
     method: "POST",
     headers: {
@@ -80,7 +79,6 @@ export async function signupAction({ request }) {
   });
 
   if (backendRes.ok) {
-    const res = await backendRes.json();
     return redirect("/login");
   } else {
     return backendRes;

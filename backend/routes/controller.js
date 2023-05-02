@@ -87,12 +87,18 @@ async function submitOrder(req, res, next) {
 // @acess Private
 async function getOrderedItemsData(req, res, next) {
   try {
-    const orderDetails = req.body;
-    const OrderedItems = await submitOrderModal.find({});
-    if (OrderedItems.length > 0) {
-      res.status(200).json({ OrderedItems: OrderedItems });
+    const userNumber = req.headers.mobilenumber;
+    if (userNumber) {
+      const OrderedItems = await submitOrderModal.find({
+        mobileNumber: userNumber,
+      });
+      if (OrderedItems.length > 0) {
+        res.status(200).json({ OrderedItems: OrderedItems });
+      } else {
+        throw new Error("You have not placed any order");
+      }
     } else {
-      throw new Error("No Order found for the User");
+      throw new Error("Missing user mobilenumber in request header");
     }
   } catch (error) {
     next(error);

@@ -26,6 +26,10 @@ const submitOrders = mongoose.Schema(
         type: String,
       },
     },
+    mobileNumber: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

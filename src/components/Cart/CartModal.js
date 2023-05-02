@@ -5,13 +5,16 @@ import classes from "./CartModal.module.css";
 import CheckOutForm from "./CheckOutForm";
 import { useSelector, useDispatch } from "react-redux";
 import { dataSliceActions } from "../store/dataSlice";
+import { getAuthToken } from "../../util/authToken";
 
 const CartModal = (props) => {
   const cartItems = useSelector((state) => state.items);
   const dispatch = useDispatch();
+  const { jwtToken, mobileNumber } = getAuthToken();
   const [showCheckOutForm, setshowCheckOutForm] = useState(false);
   const [orderSubmiting, setorderSubmiting] = useState(false);
   const [orderSubmitted, setorderSubmitted] = useState(false);
+  const [isError, setisError] = useState(true);
   let itemsToRender = cartItems.map((ele) => (
     <ModalItems data={ele} key={ele.id} />
   ));
@@ -31,19 +34,23 @@ const CartModal = (props) => {
       finalBillAmount: finalPrice.toFixed(2),
       userDetails: userData,
       orderedDateTime: new Date().toString(),
+      mobileNumber: mobileNumber,
     };
-
-    const response = await fetch(
-      "https://food-order-backend-bd383-default-rtdb.firebaseio.com/orders.json",
-      {
-        method: "POST",
-        body: JSON.stringify(orderDetails),
-      }
-    );
+    const response = await fetch("http://localhost:3001/api/submitOrder", {
+      method: "POST",
+      body: JSON.stringify(orderDetails),
+      headers: {
+        "Content-Type": "application/json",
+        authorization: "Bearer " + jwtToken,
+        mobilenumber: mobileNumber,
+      },
+    });
     if (response.ok) {
       setorderSubmiting(false);
       setorderSubmitted(true);
       dispatch(dataSliceActions.clearItems());
+    } else {
+      setisError(false);
     }
   };
   const orderBtnStatus = finalPrice === 0;
@@ -82,11 +89,12 @@ const CartModal = (props) => {
   );
   return (
     <Modal modalVis={props.modalVis}>
-      {!orderSubmiting && !orderSubmitted && finalContentToRender}
-      {orderSubmiting && !orderSubmitted && (
+      {!orderSubmiting && !orderSubmitted && finalContentToRender }
+      {isError && orderSubmiting && !orderSubmitted && (
         <p>Confirming your order with Restaurant</p>
       )}
-      {!orderSubmiting && orderSubmitted && orderSuccessContent}
+      {isError && !orderSubmiting && orderSubmitted && orderSuccessContent}
+      {!isError && <p>Unable to submit order</p>}
     </Modal>
   );
 };

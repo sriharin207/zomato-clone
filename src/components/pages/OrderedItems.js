@@ -59,6 +59,10 @@ const OrderedItems = (props) => {
         <p className={classes.title}>ORDERED ON</p>
         <p className={classes.titleValues}>{formattedDateTime}</p>
       </div>
+      <div>
+        <p className={classes.title}>MOBILE NUMBER</p>
+        <p className={classes.titleValues}>{props.data.mobileNumber}</p>
+      </div>
     </div>
   );
 };

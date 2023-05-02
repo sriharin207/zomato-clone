@@ -1,15 +1,9 @@
 import React from "react";
-import {
-  Form,
-  Link,
-  redirect,
-  useActionData,
-} from "react-router-dom";
+import { Form, Link, redirect, useActionData } from "react-router-dom";
 import classes from "./Login.module.css";
 
 const Login = () => {
   const errResponse = useActionData();
-
   return (
     <div className={classes.container}>
       <Form method="POST" className={classes.form}>
@@ -76,7 +70,7 @@ export async function loginAction({ request }) {
   if (backendRes.ok) {
     const res = await backendRes.json();
     localStorage.setItem("userlogin", JSON.stringify(res));
-    return redirect("/items")
+    return redirect("/items");
   } else {
     return backendRes;
   }
