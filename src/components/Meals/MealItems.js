@@ -24,7 +24,7 @@ export async function fetchMealItems() {
     const Meals = await data.json();
     const items = Meals.createdMeal;
     const MealItemsArr = [];
-    items.map((ele) => {
+    items.forEach((ele) => {
       MealItemsArr.push({
         id: ele._id,
         name: ele.name,

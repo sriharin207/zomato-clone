@@ -15,7 +15,7 @@ const AddItem = (props) => {
     if (cartCtxQuantity < 1) {
       props.enableBtn();
     }
-  }, [cartCtxQuantity]);
+  }, [cartCtxQuantity, props]);
 
   const addItemHandler = () => {
     dispatch(dataSliceActions.addItems(props.data));

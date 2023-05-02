@@ -28,7 +28,7 @@ const formateDatetime = (data) => {
 
 const formatorderedItemsList = (data) => {
   const arr = [];
-  data.map((ele) => {
+  data.forEach((ele) => {
     arr.push(` ${ele.quantity} x ${ele.name}`);
   });
   return arr.toString();
@@ -39,7 +39,6 @@ const OrderedItems = (props) => {
   const formattedOrderedItems = formatorderedItemsList(
     props.data.orderedItemsList
   );
-
 
   return (
     <div className={classes.container}>
