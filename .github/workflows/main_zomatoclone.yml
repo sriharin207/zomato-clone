@@ -47,6 +47,12 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node-app
+          
+      - name: unzip artifact for deployment
+        run: unzip release.zip
+
+      - name: remove zip file after deployement
+        run: rm release.zip
 
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
