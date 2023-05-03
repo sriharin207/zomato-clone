@@ -63,5 +63,5 @@ jobs:
         with:
           app-name: 'zomatoclone'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_825B74C135144C86891619BA4C6A1648 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_08763520944246D5A19E2679083FAED6 }}
           package: .
