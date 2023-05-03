@@ -14,7 +14,7 @@ export async function fetchMealItems() {
   if (!jwtToken) {
     return redirect("/");
   }
-  const data = await fetch("http://localhost:3001/api/getItemsDetails", {
+  const data = await fetch("/api/getItemsDetails", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

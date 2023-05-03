@@ -57,7 +57,7 @@ export async function loginAction({ request }) {
     password: data.get("password"),
   };
   const backendRes = await fetch(
-    "http://localhost:3001/api/verifyLoginDetails",
+    "/api/verifyLoginDetails",
     {
       method: "POST",
       headers: {

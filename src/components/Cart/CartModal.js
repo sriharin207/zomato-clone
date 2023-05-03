@@ -36,7 +36,7 @@ const CartModal = (props) => {
       orderedDateTime: new Date().toString(),
       mobileNumber: mobileNumber,
     };
-    const response = await fetch("http://localhost:3001/api/submitOrder", {
+    const response = await fetch("/api/submitOrder", {
       method: "POST",
       body: JSON.stringify(orderDetails),
       headers: {

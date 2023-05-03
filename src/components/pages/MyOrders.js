@@ -9,17 +9,14 @@ export async function fetchOrderedItems() {
   if (!jwtToken) {
     return redirect("/");
   }
-  const backendRes = await fetch(
-    "http://localhost:3001/api/getOrderedItemsData",
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: "Bearer " + jwtToken,
-        mobilenumber: mobileNumber,
-      },
-    }
-  );
+  const backendRes = await fetch("/api/getOrderedItemsData", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: "Bearer " + jwtToken,
+      mobilenumber: mobileNumber,
+    },
+  });
   if (backendRes.ok) {
     const Orders1 = await backendRes.json();
     const Orders = Orders1.OrderedItems;

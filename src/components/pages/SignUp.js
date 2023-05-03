@@ -70,7 +70,7 @@ export async function signupAction({ request }) {
     password: data.get("password"),
     firstName: data.get("firstName"),
   };
-  const backendRes = await fetch("http://localhost:3001/api/createUser", {
+  const backendRes = await fetch("/api/createUser", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
